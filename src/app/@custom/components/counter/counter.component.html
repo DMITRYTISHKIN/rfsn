@@ -1,0 +1,18 @@
+<div class="counter-container">
+  <custom-button [disabled]="value <= min" class="counter-decrement" role="accept" size="custom" (buttonClick)="onDecrement()">–</custom-button>
+  <custom-input
+    class="counter-field"
+    [height]="height"
+    role="number"
+    size="custom"
+    [value]="value"
+    [pure]="true"
+    [max]="max"
+    [pattern]="pattern"
+    [min]="min"
+    [step]="step"
+    (focus)="onFocus()"
+    (valueChange)="onChangeValue($event)"
+  ></custom-input>
+  <custom-button [disabled]="value >= max" class="counter-increment" role="accept" size="custom" (buttonClick)="onIncrement()">+</custom-button>
+</div>

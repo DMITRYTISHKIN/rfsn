@@ -1,0 +1,62 @@
+:host {
+  .counter-increment, .counter-decrement {
+    display: flex;
+    height: 20px;
+    & ::ng-deep .button {
+      width: 24px;
+      height: 20px;
+      padding: 0;
+      line-height: 1;
+      user-select: none;
+      font-family: initial;
+      background-repeat: no-repeat;
+      background-position: center;
+      &:not(.button-loading):disabled {
+        color: white;
+        background-color: #d5d5d5;
+      }
+    }
+  }
+  .counter-increment ::ng-deep .button {
+    border-radius: 0 4px 4px 0;
+    background-image: url(/assets/icons/custom/custom-plus.svg);
+  }
+  .counter-decrement ::ng-deep .button {
+    border-radius: 4px 0 0 4px;
+    background-image: url(/assets/icons/custom/custom-minus.svg);
+  }
+  .counter-container {
+    width: 78px;
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+  }
+  .counter-zero {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    background-color: white;
+    pointer-events: none;
+    user-select: none;
+  }
+  .counter-field {
+    font-size: 14px;
+    height: 20px;
+    width: 100%;
+    background-color: var(--color-input);
+    & ::ng-deep {
+      .input-container {
+        display: flex;
+      }
+      .input-element {
+        text-align: center;
+        font-size: 14px;
+        padding-bottom: 2px;
+        &:focus {
+          padding-bottom: 2px;
+        }
+      }
+    }
+  }
+}

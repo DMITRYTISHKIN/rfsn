@@ -1,0 +1,44 @@
+<form class="form people-page" [formGroup]="formGroup" [customLoader]="service.getPeopleItem.isLoading$">
+  <custom-button size="small" (buttonClick)="onBack()">Вернуться</custom-button>
+
+  <div *ngIf="storageData">Несохраненные изменения! <span class="dashed cursor" (click)="onCancelStorage()">Отменить</span></div>
+
+  <div class="form-row">
+    <label>ФИО</label>
+    <custom-input formControlName="name"></custom-input>
+  </div>
+
+  <div class="form-columns">
+    <div class="form-row">
+      <label>Дата рождения</label>
+      <custom-date-box formControlName="birthDate"></custom-date-box>
+    </div>
+    <div class="form-row">
+      <label>Пол</label>
+      <custom-select-box formControlName="gender" [dataSource]="['Мужской', 'Женский']" [width]="240"></custom-select-box>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <label>Адрес</label>
+    <custom-input formControlName="address"></custom-input>
+  </div>
+
+  <div class="form-row">
+    <label>Телефон</label>
+    <custom-input formControlName="phone" role="number"></custom-input>
+  </div>
+
+  <div class="form-row">
+    <label>Почта</label>
+    <custom-input formControlName="email"></custom-input>
+  </div>
+
+  <div class="form-row">
+    <custom-switch formControlName="isEmployee" label="Сотрудник"></custom-switch>
+  </div>
+
+  <div class="form-buttons">
+    <custom-button role="accept" [disabled]="!formGroup.dirty" (buttonClick)="onAccept()">{{ id ? 'Сохранить' : 'Создать' }}</custom-button>
+  </div>
+</form>

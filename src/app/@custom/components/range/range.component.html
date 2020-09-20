@@ -1,0 +1,15 @@
+<div
+  class="range"
+  [style.height.px]="height"
+>
+  <input
+    #input
+    class="range-element"
+    type="range"
+    [min]="min"
+    [max]="max"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onChangeValue($event)"
+  >
+</div>

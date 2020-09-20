@@ -1,0 +1,94 @@
+<div
+  class="tooltip-menu"
+  [tooltip]="!disabled"
+  [tooltipTemplate]="defaultMenuTemplate"
+  [tooltipShowArrow]="true"
+  [tooltipClick]="true"
+  [tooltipFixClick]="true"
+  [tooltipPosition]="position"
+  (tooltipOpen)="onOpen($event)"
+  (tooltipClose)="onClose()"
+
+>
+  <ng-content></ng-content>
+  <custom-svg-icon
+    *ngIf="showExpander"
+    iconWidth="20px"
+    iconHeight="20px"
+    icon="expander"
+  ></custom-svg-icon>
+  <ng-container *ngTemplateOutlet="displayTemplate; context: { item: selected }"></ng-container>
+</div>
+
+<ng-template #defaultMenuTemplate let-data="dataSource" let-id="id">
+  <div class="tooltip-menu-items">
+    <div
+      class="tooltip-menu-search"
+      *ngIf="searchEnable"
+    >
+      <custom-search-panel
+        [autoFocus]="true"
+        placeholder="Поиск..."
+        size="small"
+        theme="underlined"
+        [resultFn]="onSearchFn"
+        [debounceTime]="500"
+        [inlineSearch]="true"
+        (clearValue)="onClearSearch()"
+      ></custom-search-panel>
+      <div class="tag-box-dropdown-not_found" *ngIf="notFound">
+        По запросу '{{ filterValue }}' ничего не найдено.
+      </div>
+    </div>
+    <div class="tooltip-menu-groups scroll scroll__small" *ngIf="grouping">
+      <div
+        class="tooltip-menu-group"
+        *ngFor="let data of dataSource"
+      >
+        <div class="tooltip-menu-group-name" *ngIf="filteredItems[data[idExpr]].length">
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { item: data }"></ng-container>
+        </div>
+        <ng-container *ngTemplateOutlet="groupTemplate; context: { data: filteredItems[data[idExpr]], id: id }"></ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="!grouping">
+      <ng-container *ngTemplateOutlet="groupTemplate; context: { data: dataSource, id: id }"></ng-container>
+    </ng-container>
+    <div class="tooltip-menu-additions" *ngIf="additions">
+      <hr noshade size="1" />
+      <div
+        *ngFor="let item of additions"
+        (click)="onClickItem(item, id)"
+        class="tooltip-menu-item"
+      >
+        <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
+      </div>
+    </div>
+    <!-- <div
+      class="tooltip-menu-item"
+      (click)="onClickItem(item, id)"
+      *ngFor="let item of dataSource"
+      [class.selected]="value === item"
+    >
+      <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
+    </div> -->
+  </div>
+</ng-template>
+
+<ng-template #groupTemplate let-data="data" let-id="id">
+  <div
+    class="tooltip-menu-item"
+    *ngFor="let item of data"
+    (click)="onClickItem(item, id)"
+  >
+    <ng-container *ngTemplateOutlet="itemTemplate; context: { item: item }"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #defaultDisplayTemplate let-item="item">
+  {{ item ? item[displayExpr]: '' }}
+</ng-template>
+
+<ng-template #defaultItemTemplate let-item="item">
+  {{ item[displayExpr] }}
+</ng-template>

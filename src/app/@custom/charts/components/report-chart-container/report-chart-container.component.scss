@@ -1,0 +1,256 @@
+@import "variables";
+
+$height-title: 35px;
+$padding-button: 10px;
+
+$color-chart-main: rgba(203, 17, 171, 0.75);
+$color-chart-danger: rgba(255, 119, 60, 0.75);
+$color-chart-resolve: rgba(86, 182, 97, 0.75);
+$color-chart-other: rgba(30, 144, 255, 0.75);
+
+:host {
+  width: 100%;
+  display: block;
+  .report-chart-container {
+    box-sizing: border-box;
+    width: 100%;
+
+    .header {
+      display: flex;
+      height: $height-title;
+      align-items: center;
+      //  justify-content: space-between;
+
+      &__title {
+        font-weight: bold;
+        font-size: $size-header-m;
+        color: $color-black;
+      }
+
+      &__icon {
+        cursor: pointer;
+      }
+
+      &__switch {
+        ::ng-deep .switch label {
+          font-size: $size-text;
+        }
+      }
+
+      &__date {
+        display: flex;
+
+        custom-date-box {
+          width: 170px;
+          margin-left: 10px;
+        }
+
+        custom-time-box {
+          width: 110px;
+          margin-left: 10px;
+        }
+
+        custom-period-date {
+          margin-left: 10px;
+        }
+      }
+
+      &__select-box {
+        margin-left: 10px;
+      }
+    }
+
+    .legends {
+      display: flex;
+      height: auto;
+
+      margin-top: 10px;
+
+      font-family: Segoe UI;
+      font-style: normal;
+      font-weight: 600;
+      font-size: $size-text-l;
+      line-height: 21px;
+
+      align-items: flex-end;
+      flex-flow: wrap;
+
+      &__block {
+        display: flex;
+        align-items: center;
+        margin-right: $space-xm;
+
+        .rectangle {
+          height: 16px;
+          width: 16px;
+          border-radius: 100px;
+          margin-right: 8px;
+        }
+      }
+
+      .color-0 {
+        color: $color-main;
+
+        .rectangle {
+          background: $color-main;
+        }
+      }
+
+      .color-1 {
+        color: $color-danger;
+
+        .rectangle {
+          background: $color-danger;
+        }
+      }
+
+      .color-2 {
+        color: $color-resolve;
+
+        .rectangle {
+          background: $color-resolve;
+        }
+      }
+
+      .color-3 {
+        color: $color-other;
+
+        .rectangle {
+          background: $color-other;
+        }
+      }
+
+      .color-4 {
+        color: red;
+
+        .rectangle {
+          background: red;
+        }
+      }
+
+      .color-5 {
+        color: yellow;
+
+        .rectangle {
+          background: yellow;
+        }
+      }
+      .color-6 {
+        color: gray;
+
+        .rectangle {
+          background: gray;
+        }
+      }
+      .color-7 {
+        color: black;
+
+        .rectangle {
+          background: black;
+        }
+      }
+      &__filter-button {
+        margin-top: 5px;
+        line-height: 28px;
+        height: 28px;
+        font-weight: normal;
+        cursor: pointer;
+        border: 1px solid;
+        border-radius: 44px;
+        font-size: $size-text;
+        padding-left: $padding-button;
+        padding-right: $padding-button;
+        margin-right: 10px;
+      }
+
+      .color-filter-0 {
+        background: $color-main;
+        border-color: $color-main;
+        color: $color-white;
+      }
+      .color-filter-1 {
+        background: $color-danger;
+        border-color: $color-danger;
+        color: $color-white;
+      }
+      .color-filter-2 {
+        background: $color-resolve;
+        border-color: $color-resolve;
+        color: $color-white;
+      }
+      .color-filter-3 {
+        background: $color-other;
+        border-color: $color-other;
+        color: $color-white;
+      }
+
+      .color-filter-equils-0 {
+        background: $color-main;
+        border-color: $color-main;
+        color: $color-white;
+      }
+      .color-filter-equils-2 {
+        background: $color-danger;
+        border-color: $color-danger;
+        color: $color-white;
+      }
+      .color-filter-equils-4 {
+        background: $color-resolve;
+        border-color: $color-resolve;
+        color: $color-white;
+      }
+      .color-filter-equils-6 {
+        background: $color-other;
+        border-color: $color-other;
+        color: $color-white;
+      }
+
+      .color-filter-equils-1 {
+        background: $color-chart-main;
+        border-color: $color-chart-main;
+        color: $color-white;
+      }
+
+      .color-filter-equils-3 {
+        background: $color-chart-danger;
+        border-color: $color-chart-danger;
+        color: $color-white;
+      }
+
+      .color-filter-equils-5 {
+        background: $color-chart-resolve;
+        border-color: $color-chart-resolve;
+        color: $color-white;
+      }
+
+      .color-filter-equils-7 {
+        background: $color-chart-other;
+        border-color: $color-chart-other;
+        color: $color-white;
+      }
+    }
+
+    .line-chart {
+      margin-top: 5px;
+      height: calc(100% - 70px);
+      width: 100%;
+    }
+
+    .bar-chart {
+      margin-top: 5px;
+      height: calc(100% - 70px);
+      width: 100%;
+    }
+
+    .table {
+      margin-top: 20px;
+    }
+  }
+
+  .disabled-button {
+    color: $color-main !important;
+    border-color: $color-main !important;
+    background-color: $color-white !important;
+    transition: 0.5s;
+  }
+}

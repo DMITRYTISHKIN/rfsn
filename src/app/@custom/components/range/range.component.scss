@@ -1,0 +1,41 @@
+:host {
+  .range {
+    .range-element {
+      appearance: none;
+      width: 100%;
+      margin: 0;
+      height: 4px;
+      border-radius: 100px;
+      outline: none;
+      transition: background-color .1s;
+      background-color: rgba(255, 255, 255, 0.15);
+      &:active {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      --webkitProgressPercent: 0%;
+      background-image: linear-gradient(
+        90deg,
+        #ffe600 var(--webkitProgressPercent),
+        transparent var(--webkitProgressPercent)
+      );
+
+      &::-webkit-slider-thumb {
+        position: relative;
+        appearance: none;
+        width: 4px;
+        height: 10px;
+        background: #FFFFFF;
+        cursor: pointer;
+        border-radius: 10px;
+        &:active {
+          background: #ffe600;
+        }
+      }
+
+      &:disabled::-webkit-slider-thumb {
+        display: none;
+      }
+    }
+  }
+}

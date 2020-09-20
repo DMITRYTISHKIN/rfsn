@@ -1,0 +1,97 @@
+:host {
+  font-weight: 600;
+  font-size: 14px;
+
+  .spoiler {
+    .spoiler-content {
+      font-size: initial;
+      font-weight: initial;
+    }
+
+    .spoiler-title {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &:hover .spoiler-icon {
+        &::ng-deep svg path {
+          fill: #8B8B8B;
+        }
+      }
+
+      .spoiler-button {
+        display: inline-flex;
+      }
+      .spoiler-icon {
+        display: inline-flex;
+        margin-left: 2px;
+      }
+      &.is-open .spoiler-icon {
+        transform: rotate(180deg);
+      }
+    }
+    .title-text {
+      font-weight: 600;
+      user-select: none;
+    }
+
+    &.spoiler-role {
+      &__default {
+        .spoiler-title {
+          width: max-content;
+        }
+      }
+      &__great {
+        border: 2px solid var(--color-element);
+        border-radius: 4px;
+
+        .spoiler-content {
+          padding: 16px;
+          // box-shadow: 0 -3px 0 var(--color-element);
+        }
+        .spoiler-title {
+          padding: 12px 16px;
+          background: var(--color-element);
+          width: 100%;
+          border-radius: 2px;
+          color: var(--color-text);
+          justify-content: space-between;
+          box-sizing: border-box;
+          &:hover {
+            color: var(--color-text--hover);
+          }
+          &.is-open {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+
+      }
+      &__great-inverse {
+        .spoiler-content {
+          // border-top: 2px solid #F5F5F5;
+          margin-top: 2px;
+          background-color: var(--color-background);
+          padding: 16px;
+          border-radius: 0 0 4px 4px;
+        }
+        .spoiler-title {
+          padding: 12px 16px;
+          background-color: var(--color-background);
+          color: var(--color-text);
+          // border-bottom-color: transparent;
+          border-radius: 4px;
+          width: 100%;
+          justify-content: space-between;
+          box-sizing: border-box;
+          &:hover {
+            color: var(--color-text--hover);
+          }
+          &.is-open {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

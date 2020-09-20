@@ -1,0 +1,126 @@
+:root {
+  --backdrop-blur: none;
+  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  --color-font: #000000;
+  --color-font-inverse: #ffffff;
+  --color-font-addition: #8b8b8b;
+  --color-font--disabled: #b6b6b6;
+
+  --color-text: #000000;
+  --color-text--hover: #000000;
+  --color-text--active: #000000;
+
+  --color-background: #ffffff;
+  --color-background--hover: #f5f5f5;
+
+  --color-input: #ffffff;
+  --color-input--disabled: #f5f5f5;
+
+  --color-element: #f5f5f5;
+  --color-element--active: #d5d5d5;
+  --color-element--hover: #f5f5f5;
+
+  --color-tab: #f5f5f5;
+  --color-tab--hover: #d5d5d5;
+
+  --color-border: #d5d5d5;
+  --color-border--active: #b6b6b6;
+  --color-border--hover: #b6b6b6;
+  --color-border--disabled: #d5d5d5;
+
+  --color-placeholder: #b6b6b6;
+
+  --color-button-opacity: 1;
+  --color-button-default: #ffe600;
+  --color-button--hover: #ffe600;
+  --color-button--disabled: #d5d5d5;
+  --color-button-text--disabled: #ffffff;
+
+  --color-icon-grey: #b6b6b6;
+  --color-icon-grey--hover: #8b8b8b;
+
+  --color-scroll: rgba(0, 0, 0, 0.15);
+
+  --size-text-xs: 10px;
+  --size-text-s: 12px;
+  --size-text-m: 14px;
+  --size-text-l: 16px;
+
+  --size-header-s: 18px;
+  --size-header-m: 24px;
+  --size-header-l: 28px;
+  --size-header-xl: 36px;
+
+  --color-main: #ffe600;
+  --color-resolve: #56b661;
+  --color-other: #1e90ff;
+  --color-medium: #f7ca54;
+  --color-reject: #fe3d3e;
+  --color-danger: #ff773c;
+  --color-link: #4682b4;
+
+  --color-f5: #f5f5f5;
+  --color-d5: #d5d5d5;
+  --color-b6: #b6b6b6;
+  --color-8b: #8b8b8b;
+
+  --color-bg: #FFFFFF;
+
+  --color-toast-reject: #fe3d3eee;
+  --color-toast-resolve: #56b661ee;
+
+}
+
+[data-theme="dark"] {
+  --backdrop-blur: blur(30px);
+  --box-shadow: none;
+
+  --color-font: #ffffff;
+  --color-font-inverse: #000000;
+  --color-font-addition: rgba(255, 255, 255, 0.5);
+  --color-font--disabled: rgba(255, 255, 255, 0.25);
+
+  --color-text: rgba(255, 255, 255, 0.75);
+  --color-text--hover: #ffffff;
+  --color-text--active: #ffffff;
+
+  --color-background: #000000;
+  --color-background--hover: rgba(255, 255, 255, 0.25);
+
+  --color-input: rgba(255, 255, 255, 0.25);
+  --color-input--disabled: rgba(255, 255, 255, 0.1);
+
+  --color-element: rgba(255, 255, 255, 0.25);
+  --color-element--active: rgba(255, 255, 255, 0.5);
+  --color-element--hover: rgba(255, 255, 255, 0.5);
+
+  --color-tab: rgba(255, 255, 255, 0.5);
+  --color-tab--hover: rgba(255, 255, 255, 0.75);
+
+  --color-border: rgba(255, 255, 255, 0.25);
+  --color-border--active: rgba(255, 255, 255, 0.5);
+  --color-border--hover: rgba(255, 255, 255, 0.5);
+  --color-border--disabled: rgba(255, 255, 255, 0.1);
+
+  --color-placeholder: rgba(255, 255, 255, 0.5);
+
+  --color-button-opacity: 0.75;
+  --color-button-default: #ffffff;
+  --color-button--hover: transparent;
+  --color-button--disabled: rgba(255, 255, 255, 0.1);
+  --color-button-text--disabled: rgba(255, 255, 255, 0.25);
+
+  --color-icon-grey: rgba(255, 255, 255, 0.5);
+  --color-icon-grey--hover: rgba(255, 255, 255, 0.75);
+
+  --color-scroll: rgba(255, 255, 255, 0.25);
+
+  --color-f5: rgba(255, 255, 255, 0.1);
+  --color-d5: rgba(255, 255, 255, 0.25);
+  --color-b6: rgba(255, 255, 255, 0.5);
+  --color-8b: rgba(255, 255, 255, 0.75);
+
+  --color-bg: rgba(0, 0, 0, 0.75);
+
+}

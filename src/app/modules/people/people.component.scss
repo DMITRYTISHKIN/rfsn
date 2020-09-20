@@ -1,0 +1,24 @@
+@import "variables";
+
+:host {
+  .people {
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+    &__filters {
+      width: 800px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: $space-xm;
+    }
+    &__datail {
+      padding: $space;
+      display: grid;
+      grid-gap: $space-l;
+      grid-auto-flow: column;
+      width: max-content;
+    }
+
+  }
+}

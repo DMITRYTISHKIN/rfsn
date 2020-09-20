@@ -1,0 +1,4 @@
+<div class="error-dialog">
+  <div *ngFor="let i of popup.data" class="error-dialog-item">
+    <span  class="error-dialog-time">{{ i.date | dateFormat:'DD.MM.YY, hh:mm:ss' }}</span> {{ i.message }}</div>
+</div>

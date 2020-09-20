@@ -1,0 +1,3 @@
+<svg class="arrow-next style-override" width='32' ngClass="arrow-prev" height='64' viewBox='0 0 34 66' fill='none' xmlns="http://www.w3.org/2000/svg">
+    <path class="style-override" d='M0.75 65.1875L32.75 33.1875L0.75 1.1875' stroke-width='1.5' stroke="black" />
+</svg>

@@ -1,0 +1,30 @@
+<div
+  class="period {{ PeriodSize[size] || PeriodSize.large }}"
+  [class.period-with-time]="withTime"
+  #periodEl
+  (click)="onClick()"
+>
+  <div class="period__value">
+    <ng-container *ngIf="value && value[0] || value[1]">
+      <span
+        *ngIf="value[0]"
+        (click)="onSelectDirection(PeriodDirection.start)"
+        [class.selected]="selectedDirection === PeriodDirection.start"
+      >{{ value[0] | dateFormat:format }}</span>
+      <ng-container *ngIf="value[1]">
+        &nbsp;–&nbsp;
+        <span
+          (click)="onSelectDirection(PeriodDirection.end)"
+          [class.selected]="selectedDirection === PeriodDirection.end"
+        >{{ value[1] | dateFormat:format }}</span>
+      </ng-container>
+    </ng-container>
+
+  </div>
+  <div class="period__icons">
+    <custom-svg-icon
+      className="icon-grey"
+      icon="custom/custom-calendar"
+    ></custom-svg-icon>
+  </div>
+</div>

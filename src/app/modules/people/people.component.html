@@ -1,0 +1,82 @@
+<div class="people" [customLoader]="service.getPeople.isLoading$">
+  <p>
+    <b>Задача 2.</b>
+    <br/>
+    Реализовать/описать реализацию функциональности по работе с данными о людях в банке.<br/>
+    Человек может являться клиентом и/или сотрудником банка.<br/>
+    Необходимо работать с данными о людях: просматривать, заводить, редактировать.
+  </p>
+  <div class="people__header">
+    <div class="people__filters">
+      <custom-search-panel
+      placeholder="Поиск..."
+      [resultFn]="onSearchFn"
+      [inlineSearch]="true"
+      (clearValue)="onSearchFn(null)"
+    ></custom-search-panel>
+    <custom-select-box
+      [dataSource]="PEOPLE_TYPE"
+      placeholder="Все"
+      [optionPlaceholder]="true"
+      (valueChange)="onFilterPeopleType($event)"
+    ></custom-select-box>
+    </div>
+    <custom-button role="accept" (buttonClick)="onCreate()">Новый клиент</custom-button>
+  </div>
+  <app-tgrid
+    [dataSource]="data"
+    [clickable]="true"
+    [autoWidth]="true"
+    [staticHeader]="true"
+    idExpr="cnum"
+    [rowControlTemplate]="rowControlTemplate"
+    [detailTemplate]="detailTemplate"
+  >
+    <app-tgrid-column key="id" name="ID" [allowSort]="true"></app-tgrid-column>
+    <app-tgrid-column key="name" name="Имя" [allowSort]="true" [template]="firstNameTemplate">
+      <ng-template #firstNameTemplate let-data="data">
+        <div class="icon-and-text-m">
+          <custom-svg-icon tooltip="Сотрудник" *ngIf="data.isEmployee" icon="logo" iconWidth="16px" iconHeight="16px"></custom-svg-icon>
+          {{ data.name }}
+        </div>
+
+      </ng-template>
+    </app-tgrid-column>
+    <app-tgrid-column key="birthDate" name="Дата рождения" [allowSort]="true" [template]="birthDateTemplate">
+      <ng-template #birthDateTemplate let-data="data">
+        {{ data.birthDate | dateFormat:"D MMMM YYYY" }}
+      </ng-template>
+    </app-tgrid-column>
+    <app-tgrid-column key="gender" name="Пол"></app-tgrid-column>
+    <app-tgrid-column key="address" name="Адрес"></app-tgrid-column>
+    <app-tgrid-column key="phone" name="Телефон" [template]="phoneTemplate">
+      <ng-template #phoneTemplate let-data="data">
+        {{ data.phone | phone }}
+      </ng-template>
+    </app-tgrid-column>
+    <app-tgrid-column key="email" name="Почта"></app-tgrid-column>
+
+    <ng-template #rowControlTemplate let-data="data">
+      <custom-svg-icon
+        (iconClick)="onEdit(data)"
+        icon="common/edit"
+        className="icon-grey"
+        tooltip="Редактировать"
+        [routerLink]="[data.id]"
+      ></custom-svg-icon>
+    </ng-template>
+
+    <ng-template #detailTemplate let-data="data">
+      <div class="people__datail">
+        <div *ngFor="let item of data.bankAccounts" class="column">
+          <label>Счет</label><span>{{ item.id }}</span>
+          <label>Дата создания</label><span>{{ item.createDate | dateFormat:"DD.MM.YYYY" }}</span>
+          <label>БИК</label><span>{{ item.bic }}</span>
+          <label>ИНН</label><span>{{ item.inn }}</span>
+          <label>Платежная система</label><custom-svg-icon tooltip="{{ item.cardTypeName }}" [style.width.px]="16" icon="common/{{ item.cardType }}"></custom-svg-icon>
+        </div>
+      </div>
+
+    </ng-template>
+  </app-tgrid>
+</div>

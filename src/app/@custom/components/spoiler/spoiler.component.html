@@ -1,0 +1,14 @@
+<div class="spoiler {{ SpoilerRole[role] || SpoilerRole.default }}" [class.pure]="pure">
+  <div class="spoiler-title" [class.is-open]="isOpen"  [ngClass]="className" (click)="onClick($event)">
+    <ng-container *ngTemplateOutlet="titleTemplate || titleDefaultTemplate; context: { data: { label: label, isOpen: isOpen, content: content } }"></ng-container>
+    <custom-svg-icon class="spoiler-icon" className="icon-grey" icon="custom/custom-spoiler-expander"></custom-svg-icon>
+  </div>
+
+  <div [@detail]="detail" (@detail.done)="endAnimation()">
+    <div class="spoiler-content" [ngClass]="className" *ngIf="!dynamic || isOpenDynamic"><ng-content></ng-content></div>
+  </div>
+</div>
+
+<ng-template #titleDefaultTemplate let-data="data">
+  <div class="spoiler-button">{{ data.label }}</div>
+</ng-template>

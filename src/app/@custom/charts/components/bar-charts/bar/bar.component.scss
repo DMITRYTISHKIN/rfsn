@@ -1,0 +1,16 @@
+.container-bar {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 10px;
+  margin-left: 4px;
+  
+  border-bottom: none;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+
+  transition: 0.5s;
+}

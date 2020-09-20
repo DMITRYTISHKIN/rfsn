@@ -1,0 +1,99 @@
+:host {
+  display: flex;
+  justify-items: center;
+
+  ::ng-deep svg {
+    margin: auto;
+
+    &.icon-dark-gray {
+      & path {
+        transition: fill 0.15s;
+        fill: #999999;
+      }
+    }
+
+    &.icon-dark-white {
+      & path {
+        transition: fill 0.15s;
+        fill: #999999;
+      }
+    }
+    &.icon-grey {
+      & path {
+        transition: fill .15s;
+        fill: var(--color-icon-grey);
+      }
+    }
+
+    &.icon-opacity {
+      & path {
+        transition: fill 0.15s;
+        fill: rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    &.icon-main {
+      & path {
+        transition: fill 0.15s;
+        fill: #ffe600;
+      }
+    }
+
+    &.icon-resolve {
+      & path {
+        transition: fill 0.15s;
+        fill: #56b661;
+      }
+    }
+
+    &.icon-white {
+      opacity: 1;
+      transition: opacity .15s;
+
+      & path {
+        fill: #FFFFFF;
+      }
+    }
+  }
+
+  &.clickable, &.active {
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 200ms ease;
+    will-change: transition;
+    &:hover, &.active {
+      ::ng-deep svg {
+        &.icon-dark-gray {
+          & path {
+            fill: #646464;
+          }
+        }
+        &.icon-dark-white {
+          & path {
+            fill: white;
+          }
+        }
+        &.icon-grey {
+          & path {
+            fill: var(--color-icon-grey--hover);
+          }
+        }
+
+        &.icon-opacity {
+          & path {
+            fill: #ffe600;
+          }
+        }
+
+        &.icon-white {
+          opacity: .75;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}

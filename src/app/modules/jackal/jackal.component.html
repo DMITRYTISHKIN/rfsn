@@ -1,0 +1,22 @@
+<form class="form jackal">
+  <p>
+    <b>Задача 1.</b>
+    <br/>
+    Реализовать алгоритм преобразующий строки по примеру:
+    <br/>
+    AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB -> A4B3C2XYZD4E3F3A6B28
+  </p>
+  <div class="form-row">
+    <label>Входная строка</label>
+    <custom-input (valueChange)="onChangeValue($event)" [showClear]="true"></custom-input>
+  </div>
+  <div class="form-row">
+    <label>Результат</label>
+    <custom-input [readonly]="true" [value]="result"></custom-input>
+  </div>
+  <div class="form-row">
+    <custom-spoiler label="Решение">
+      <code class="jackal__code">{{ code }}</code>
+    </custom-spoiler>
+  </div>
+</form>

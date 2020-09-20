@@ -1,0 +1,31 @@
+@import "variables";
+
+:host {
+  width: inherit;
+  height: inherit;
+  user-select: none;
+}
+
+.report-line-chart {
+  display: flex;
+  height: 331px;
+
+  .graph {
+  width: 610px;
+  height: 100%;
+
+  ::ng-deep .block-tooltip {
+    fill: white;
+  }
+
+  * {
+    fill: none;
+    stroke-width: 2px;
+  }
+  }
+
+  .scale {
+  width: 45px;
+  height: 100%;
+  }
+}

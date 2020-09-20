@@ -1,0 +1,101 @@
+:host {
+  font-size: 16px;
+  &.ng-dirty.ng-invalid {
+    & .textarea-element {
+      border-color: #ffe600;
+      background-color: #FDEEF9;
+    }
+  }
+  .validation-container {
+    width: max-content;
+    position: absolute;
+    font-size: 14px;
+    color: #ffe600;
+  }
+
+  .textarea-container {
+    position: relative;
+    line-height: 22px;
+    display: flex;
+
+    .textarea-element {
+      resize: none;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      background-color: var(--color-input);
+      color: var(--color-font);
+      border: none;
+      outline: none;
+      user-select: text;
+      font-size: 1em;
+
+      border: 1px solid var(--color-border);
+      background-clip: padding-box;
+      position: relative;
+      border-radius: 4px;
+      transition: border-color .3s;
+
+      &:disabled {
+        background-color: var(--color-input--disabled);
+        border-color: var(--color-border--disabled);
+        color: var(--color-font--disabled);
+        cursor: not-allowed;
+      }
+      &::placeholder {
+        color: var(--color-placeholder);
+      }
+      &:read-only {
+        background-color: var(--color-input--disabled);
+        border-color: var(--color-border--disabled);
+      }
+      &:focus {
+        border-color: var(--color-border--active);
+      }
+
+      &.pure {
+        padding: 0;
+        border-radius: 0;
+        border: none;
+        &:focus {
+          padding: 0;
+          border: none;
+        }
+        &:read-only {
+          cursor: default;
+        }
+      }
+    }
+
+    &.input-size {
+      &__large {
+        .textarea-element {
+          font-size: 16px;
+          padding: 9px 10px;
+          &::placeholder {
+            font-size: 16px;
+          }
+        }
+      }
+      &__small {
+        .textarea-element {
+          font-size: 14px;
+          padding: 7px 8px;
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .textarea-counter {
+    display: flex;
+    &[hidden] {
+      display: block;
+      visibility: hidden;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+:host {
+  position: relative;
+  display: block;
+
+  &.ng-dirty.ng-invalid {
+    & custom-input::ng-deep .input-element {
+      border-color: #ffe600;
+      background-color: #FDEEF9;
+    }
+  }
+  .validation-container {
+    width: max-content;
+    position: absolute;
+    font-size: 14px;
+    color: #ffe600;
+  }
+
+  .search-panel-label {
+    display: block;
+    color: #8B8B8B;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .search-panel {
+    position: relative;
+
+    &.filled {
+      .search-panel-clear ::ng-deep svg path,
+      .search-panel-loading ::ng-deep svg path,
+      custom-input ::ng-deep .input-icon svg path {
+        fill: #FFFFFF !important;
+      }
+      &.focus {
+        .search-panel-clear ::ng-deep svg path,
+        .search-panel-loading ::ng-deep svg path,
+        custom-input ::ng-deep .input-icon svg path {
+          fill: #000000 !important;
+        }
+      }
+    }
+
+  }
+
+  .remove, .loading {
+    position: absolute;
+  }
+
+  .error {
+    ::ng-deep {
+      border-color: #fe3d3e;
+    }
+  }
+  .error-text {
+    color: #fe3d3e;
+    padding-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .search-panel-clear {
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+    width: 30px;
+    height: 100%;
+  }
+
+  .search-result {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    width: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border-radius: 4px;
+    padding: 8px 12px;
+    z-index: 100;
+    & .search-result-item {
+      cursor: pointer;
+      font-size: 16px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: #000;
+      &:hover, &.search-result-item-focused {
+        background-color: #f6f6f6;
+      }
+    }
+
+    & .search-result-searching, & .search-result-empty {
+      color: #8b8b8b;
+    }
+  }
+}

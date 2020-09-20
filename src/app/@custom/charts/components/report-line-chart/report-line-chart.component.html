@@ -1,0 +1,20 @@
+<div class="report-line-chart">
+  <div class="scale" #scale></div>
+  <div *ngIf="dragScroll" class="graph" [style.width.px]="width" [style.height.px]="height" #chart 
+  dragscroll>
+  </div>
+  
+  <div  
+  *ngIf="!dragScroll" 
+  class="graph" 
+  lineChart 
+  [isDate]="isDate"
+  [legends]="legends"
+  [graphMaxX]="graphMaxX"
+  [graphMaxY]="graphMaxY"
+  [scaleFuncs]="scaleFuncs"
+  [padding]="padding"
+  [style.width.px]="width" 
+  [style.height.px]="height" #chart>
+  </div>
+</div>

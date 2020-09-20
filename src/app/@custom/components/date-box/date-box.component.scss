@@ -1,0 +1,29 @@
+$color-pink: red;
+$color-pink-bg: #ff00001f;
+
+:host {
+  &.ng-dirty.ng-invalid custom-input::ng-deep {
+    & .input-element {
+      border-color: $color-pink !important;
+      background-color: $color-pink-bg !important;
+    }
+  }
+  .date-box {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .date-box-datepicker {
+    position: relative;
+  }
+  .date-box-clear {
+    position: absolute;
+    height: 100%;
+    top: 0;
+  }
+  .date-box-timepicker {
+    width: 100px;
+  }
+}

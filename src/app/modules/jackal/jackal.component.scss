@@ -1,0 +1,9 @@
+:host {
+  .jackal {
+    width: 640px;
+
+    &__code {
+      white-space: break-spaces;
+    }
+  }
+}

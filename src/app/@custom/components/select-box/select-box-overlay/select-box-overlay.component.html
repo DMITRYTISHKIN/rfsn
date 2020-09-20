@@ -1,0 +1,69 @@
+<div
+  class="select-box-options {{ SelectBoxSize[instance.size] || SelectBoxSize.large }}"
+>
+  <div #wrap class="select-box-options-wrap">
+    <div
+      class="select-box-search"
+      *ngIf="instance.searchEnable"
+    >
+      <custom-search-panel
+        #searchPanel
+        [placeholder]="searchPlaceholder"
+        theme="underlined"
+        [size]="instance.size"
+        [resultFn]="onSearchFn"
+        [debounceTime]="500"
+        [inlineSearch]="true"
+        (clearValue)="onClearSearch()"
+      ></custom-search-panel>
+    </div>
+    <div class="select-box-empty" *ngIf="notFound">
+      По запросу '{{ filterValue }}' ничего не найдено.
+    </div>
+    <div
+      class="select-box-option"
+      [class.select-box-option-selected]="instance.isEmpty"
+      *ngIf="instance.optionPlaceholder"
+      (click)="onClickEmpty()"
+    >{{ instance.placeholder }}</div>
+    <ng-container *ngIf="instance.grouping">
+      <div
+        class="select-box-option-group"
+        *ngFor="let data of dataSource"
+      >
+        <div class="select-box-option-group-name" *ngIf="filteredItems[data[instance.idExpr]].length">
+          <span>
+            <ng-container *ngTemplateOutlet="instance.itemTemplate; context: { item: data }"></ng-container>
+          </span>
+        </div>
+        <ng-container *ngTemplateOutlet="groupTemplate; context: { data: filteredItems[data[instance.idExpr]] }"></ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!instance.grouping">
+      <ng-container *ngTemplateOutlet="groupTemplate; context: { data: dataSource }"></ng-container>
+    </ng-container>
+    <div class="select-box-additions" *ngIf="instance.additions">
+      <hr *ngIf="dataSource && dataSource.length" noshade size="1" />
+      <div
+        *ngFor="let item of instance.additions"
+        (click)="onClickItem(item)"
+        class="select-box-option select-box-addition"
+        [class.select-box-option-selected]="instance.selection[instance.valueExpr(item)]"
+      >
+        <ng-container *ngTemplateOutlet="instance.itemTemplate; context: { item: item }"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #groupTemplate let-data="data">
+  <div class="select-box-empty" *ngIf="(!data || !data.length) && !filterValue">Нет данных</div>
+  <div
+    class="select-box-option"
+    *ngFor="let item of data"
+    [class.select-box-option-selected]="instance.selection[instance.valueExpr(item)]"
+    (click)="onClickItem(item)"
+  >
+    <ng-container *ngTemplateOutlet="instance.itemTemplate; context: { item: item }"></ng-container>
+  </div>
+</ng-template>

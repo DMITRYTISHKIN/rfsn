@@ -1,0 +1,10 @@
+<div class="switch-container" (click)="onClick($event)" [class.disabled]="disabled">
+  <div class="switch" [class.switch-enable]="value"></div>
+  <label *ngIf="label">{{ label }}</label>
+  <custom-svg-icon
+    class="hint"
+    *ngIf="hint"
+    icon="common/hint"
+    [tooltip]="hint"
+  ></custom-svg-icon>
+</div>

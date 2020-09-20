@@ -1,0 +1,8 @@
+<div class="container-bar">
+  <div 
+    *ngFor="let item of data" class="bar" 
+    [style.height.%]="item.barValue"
+    [style.background-color]="item.barColor"
+    [tooltip]="item.barType + ': ' + item.barCount"
+  ></div>
+</div>

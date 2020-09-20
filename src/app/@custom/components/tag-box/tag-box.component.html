@@ -1,0 +1,37 @@
+<div
+  #tagBox
+  class="tag-box {{ InputSize[size] || InputSize.large }}"
+  (click)="onClick()"
+  (mousedown)="onMouseDown($event)"
+  [class.disabled]="disabled"
+  [class.readonly]="readonly"
+  [style.width.px]="width"
+  [class.tag-box-open]="overlay"
+>
+  <div class="tag-box-placeholder" *ngIf="placeholder && !allowInput && !value?.length">{{ placeholder }}</div>
+  <div #tag class="tag-box-item" *ngFor="let item of (value | fn:sliceValue:collapsedCount)" (click)="onTagClick(item)">
+    <ng-container *ngTemplateOutlet="displayTextTemplate || displayTextTemplateDefault; context: { item: item }"></ng-container>
+    <custom-svg-icon className="icon-grey" class="tag-box-item-remove" icon="custom/custom-cancel" (iconClick)="onRemove($event, item)"></custom-svg-icon>
+  </div>
+  <div
+    *ngIf="collapsedCount || collapsedCount === null"
+    class="tag-box-item tag-box-expander"
+    (click)="onExpand($event)"
+  >
+    <ng-container *ngIf="collapsedCount > 0">+{{ collapsedCount }}</ng-container>
+    <custom-svg-icon *ngIf="collapsedCount === null" iconWidth="20px" iconHeight="20px" icon="custom/custom-collapse"></custom-svg-icon>
+  </div>
+  <custom-input
+    #input
+    class="tag-box-input"
+    *ngIf="allowInput"
+    [pure]="true"
+    size="custom"
+    [placeholder]="placeholder"
+    (enterKey)="onEnterInput($event)"
+  ></custom-input>
+</div>
+
+<ng-template #displayTextTemplateDefault let-item="item">
+  {{ item[displayExpr] || item }}
+</ng-template>

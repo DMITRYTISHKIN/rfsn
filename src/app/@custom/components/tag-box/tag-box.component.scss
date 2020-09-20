@@ -1,0 +1,180 @@
+:host {
+  &.ng-dirty.ng-invalid {
+    & .tag-box {
+      border-color: #ffe600;
+      background-color: #FDEEF9;
+    }
+  }
+  .validation-container {
+    width: max-content;
+    position: absolute;
+    font-size: 14px;
+    color: #ffe600;
+  }
+  .tag-box {
+    color: var(--color-font);
+    width: 100%;
+    border: 1px solid var(--color-border);
+    background-clip: padding-box;
+    position: relative;
+    border-radius: 4px;
+    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+
+    box-sizing: border-box;
+    background-color: var(--color-input);
+
+    cursor: pointer;
+    overflow: hidden;
+
+    transition: border-color .3s;
+
+    &.tag-box-open {
+      border-color: var(--color-border--active);
+    }
+
+    &.input-size {
+      &__large {
+        min-height: 40px;
+        padding: 4px 0 0 4px;
+        .tag-box-placeholder {
+          font-size: 16px;
+          margin: 0 4px 4px 6px;
+        }
+        .tag-box-item {
+          height: 30px;
+          margin: 0 4px 4px 0;
+          font-size: 14px;
+          padding: 0 6px;
+
+          .tag-box-item-remove {
+            margin-left: 4px;
+          }
+        }
+        .tag-box-expander {
+          width: 34px;
+        }
+        & .tag-box-input {
+          height: 30px;
+          margin: 0 4px 4px 0;
+          font-size: 14px;
+          &::ng-deep .input-element {
+            font-size: 14px;
+            padding: 0 6px 2px 6px;
+          }
+        }
+      }
+
+      &__small {
+        min-height: 28px;
+        padding: 2px 0 0 2px;
+        .tag-box-placeholder {
+          font-size: 14px;
+          margin: 0 2px 2px 4px;
+        }
+
+        .tag-box-item {
+          height: 22px;
+          margin: 0 2px 2px 0;
+          font-size: 12px;
+          padding: 0 4px;
+
+          .tag-box-item-remove {
+            margin-left: 2px;
+          }
+        }
+        .tag-box-expander {
+          width: 28px;
+        }
+        & .tag-box-input {
+          height: 22px;
+          margin: 0 2px 2px 0;
+          font-size: 12px;
+          &::ng-deep .input-element {
+            font-size: 12px;
+            padding: 0 4px;
+          }
+        }
+      }
+    }
+
+    .tag-box-item {
+      border-radius: 2px;
+      background-color: var(--color-element);
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      cursor: default;
+      box-sizing: border-box;
+      line-height: 16px;
+
+      .tag-box-item-remove {
+        cursor: pointer;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        padding-top: 2px;
+      }
+    }
+
+    &.disabled {
+      background-color: var(--color-input--disabled);
+      border-color: var(--color-border--disabled);
+      cursor: not-allowed;
+
+      .tag-box-item {
+        pointer-events: none;
+        border-color: var(--color-border--disabled);
+        color: var(--color-font--disabled);
+        background-color: transparent;
+
+        .tag-box-item-remove {
+          display: none;
+        }
+      }
+      .tag-box-expander {
+        pointer-events: none;
+      }
+    }
+
+    &.readonly {
+      background-color: var(--color-input--disabled);
+      border-color: var(--color-border--disabled);
+      cursor: auto;
+
+      .tag-box-item {
+        border-color: var(--color-border--disabled);
+        background-color: transparent;
+
+        .tag-box-item-remove {
+          display: none;
+        }
+      }
+    }
+
+    .tag-box-expander {
+      padding: 0;
+      justify-content: center;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-element);
+      &:hover {
+        background-color: var(--color-element--active);
+      }
+    }
+
+    & .tag-box-placeholder {
+      color: #B6B6B6;
+      display: flex;
+      align-items: center;
+    }
+
+    & .tag-box-input {
+      display: inline-flex;
+      flex: 1;
+      min-width: 30%;
+    }
+  }
+}

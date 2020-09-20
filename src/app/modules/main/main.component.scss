@@ -1,0 +1,9 @@
+@import "variables";
+
+:host {
+  .main {
+    &__content {
+      padding: $space-l
+    }
+  }
+}

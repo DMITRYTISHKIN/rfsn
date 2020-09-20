@@ -1,0 +1,101 @@
+:host {
+  font-size: 14px;
+  .switch-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    width: max-content;
+    overflow: hidden;
+    height: 20px;
+
+    &.disabled {
+      // opacity: .75;
+      pointer-events: none;
+      .switch {
+        &:after {
+          background-color: var(--color-element--active);
+          border-color: transparent;
+        }
+        &:before {
+          background-color: var(--color-element);
+        }
+
+        &.switch-enable:after {
+          background-color: var(--color-element--active);
+          border-color: transparent;
+        }
+        &.switch-enable:before {
+          background-color: var(--color-element);
+        }
+      }
+    }
+
+    & .hint {
+      margin-left: 4px;
+    }
+
+    & .switch {
+      position: relative;
+      width: 32px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      &:before {
+        content: '';
+        width: 100%;
+        height: 12px;
+        background-color: #B6B6B6;
+        border-radius: 100px;
+        transition: transform 0.15s, background-color 0.15s, border-color 0.15s;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        transform: translateX(0);
+        background-color: var(--color-background);
+        border-radius: 100%;
+        transition: transform 0.15s, background-color 0.15s, border-color 0.15s;
+        box-sizing: border-box;
+        border: 2px solid #B6B6B6;
+      }
+      &.switch-enable:after {
+        border-color: #ffe600;
+        background-color: var(--color-background);
+        transform: translateX(calc(100% - 4px));
+      }
+      &.switch-enable:before {
+        background-color: #ffe600;
+      }
+    }
+    & > label {
+      line-height: 20px;
+      margin-left: 10px;
+      color: var(--color-text);
+    }
+    &:hover {
+      & > label {
+        color: var(--color-text--hover);
+      }
+      .switch {
+        &:before {
+          background-color: #D5D5D5;
+        }
+        &:after {
+          border-color: #D5D5D5;
+        }
+        &.switch-enable:after {
+          border-color: #ffe600;
+        }
+        &.switch-enable:before {
+          background-color: #ffe600;
+        }
+      }
+    }
+
+  }
+}

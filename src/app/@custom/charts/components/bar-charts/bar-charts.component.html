@@ -1,0 +1,15 @@
+<div class="bar-charts-container">
+  <div class="bar-chart-scale">
+    <div class="bar-chart-scale__value" *ngFor="let item of ticks" [style.height.px]="heightTicks">
+      {{ item }}
+    </div>
+  </div>
+  <div class="bar-chart" dragscroll>
+    <div *ngFor="let item of keyBars" class="block">
+      <div class="block__content">
+        <app-bar [data]="objDataBars[item]" [style.height.%]="100"></app-bar>
+      </div>
+      <div class="block__title">{{ item }}</div>
+    </div>
+  </div>
+</div>

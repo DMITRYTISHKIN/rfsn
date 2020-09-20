@@ -1,0 +1,96 @@
+<div class="report-chart-container" #container>
+  <div class="header">
+    <div class="header__title">{{ titleChart }}</div>
+    <div class="header__icon" *ngIf="exportGraph" (click)="onExport()">
+      <custom-svg-icon icon="download-report" className="icon-grey" tooltip="Выгрузить график">
+      </custom-svg-icon>
+    </div>
+    <div class="header__switch" *ngIf="switchEva">
+      <custom-switch label="Ева Вайлет"></custom-switch>
+    </div>
+    <div class="header__date" *ngIf="dateTimeSelect">
+      <custom-date-box
+        [value]="dateNow"
+        (valueChange)="onChangePeriod($event)"
+        size="small">
+      </custom-date-box>
+      <custom-time-box
+        [value]="periodFrom"
+        (valueChange)="onChangeHours($event, 'from')"
+        size="small">
+    </custom-time-box>
+      <custom-time-box
+        [value]="periodTo"
+        (valueChange)="onChangeHours($event, 'to')"
+        size="small">
+    </custom-time-box>
+    </div>
+    <div class="header__date" *ngIf="dateSelect">
+      <custom-date-box
+        [value]="dateNow"
+        (valueChange)="onChangePeriodType($event, 'from')"
+        size="small">
+      </custom-date-box>
+      <custom-date-box
+        [value]="dateNow"
+        (valueChange)="onChangePeriodType($event, 'to')"
+        size="small">
+      </custom-date-box>
+    </div>
+    <div class="header__date" *ngIf="dateSelectDays">
+      <custom-period-date [value]="periodDates" size="small" (valueChange)="onChangeDays($event)"></custom-period-date>
+    </div>
+    <div class="header__select-box" *ngIf="dataSelectBox && dataSelectBox.length > 0">
+      <custom-select-box size="small" [width]="160" [dataSource]="dataSelectBox" [value]="dataSelectBox[0]"
+      (valueChange)="onChangedSelectBox($event)"></custom-select-box>
+    </div>
+  </div>
+  <div class="legends">
+    <ng-container *ngIf="!filter">
+      <div *ngFor="let item of legends; let i = index;" class="legends__block color-{{ i }}">
+        <div class="rectangle"></div>{{ item }}
+      </div>
+    </ng-container>
+    <ng-container *ngIf="filter">
+      <ng-container *ngIf="!barEquils">
+        <div
+          *ngFor="let item of legends; let i = index;"
+          (click)="onFilterButton($event, item, i)"
+          class="legends__filter-button color-filter-{{ i }}"
+          [class.disabled-button]="legendsState[item]"
+         >
+          {{ item }}
+        </div>
+      </ng-container>
+      <ng-container *ngIf="barEquils">
+        <div
+          *ngFor="let item of legends; let i = index;"
+          (click)="onFilterButton($event, item, i)"
+          class="legends__filter-button color-filter-equils-{{ i }}"
+          [class.disabled-button]="legendsState[item]"
+         >
+          {{ item }}
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div *ngIf="typeGraph === 'line-chart'" class="line-chart" #exportLine>
+    <app-report-line-chart
+      [data]="data"
+      [timeScale]="timeScale"
+      [width]="widthSvg"
+      [dragScroll]="dragScroll"
+      [period]="period"
+      [legends]="legends"
+      (pointClick)="onPointClick($event)"
+    ></app-report-line-chart>
+  </div>
+
+  <div *ngIf="typeGraph === 'bar-chart'" class="bar-chart">
+      <app-bar-charts [data]="data" [barEquils]="barEquils"></app-bar-charts>
+  </div>
+
+  <div class="table">
+    <ng-container *ngTemplateOutlet="templateTable"></ng-container>
+  </div>
+</div>

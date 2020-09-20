@@ -1,0 +1,17 @@
+<div class="radio">
+  <div
+    class="radio-item"
+    *ngFor="let item of dataSource"
+    (click)="onClickRadio($event, item)"
+    [class.selected]="item === value"
+  >
+    <div class="radio-item-button"></div>
+    <span class="radio-item-label">
+      <ng-container *ngTemplateOutlet="itemTemplate || itemDefaultTemplate; context: { data: item }"></ng-container>
+    </span>
+  </div>
+</div>
+
+<ng-template #itemDefaultTemplate let-data="data">
+  {{ data | fn:displayExprFn }}
+</ng-template>

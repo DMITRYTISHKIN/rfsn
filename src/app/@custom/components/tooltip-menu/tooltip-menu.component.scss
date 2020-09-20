@@ -1,0 +1,45 @@
+:host {
+  .tooltip-menu {
+    display: flex;
+    .tooltip-menu-expander {
+      margin-right: 12px;
+    }
+  }
+}
+
+.tooltip-menu-group-name {
+  padding: 8px 20px 4px 20px;
+  color: #8B8B8B;
+}
+
+.tooltip-menu-groups {
+  height: 259px;
+  overflow: auto;
+}
+
+
+.tooltip-menu-additions {
+  & hr {
+    margin: 12px 20px;
+    border-color: #d5d5d5;
+  }
+}
+
+.tooltip-menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  .tooltip-menu-search {
+    padding: 8px 20px;
+  }
+  .tooltip-menu-item {
+    padding: 5px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    &:hover {
+      background-color: #F6F6F6;
+      color: #ffe600;
+    }
+  }
+}
